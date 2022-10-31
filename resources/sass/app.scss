@@ -1,4 +1,21 @@
-//@import "material-kit-pro";
+// Bootstrap Functions
+@import "material-kit-pro/bootstrap/functions";
+
+// Custom Variables
+@import "material-kit-pro/custom/variables";
+
+// Theme Variables
+@import "material-kit-pro/variables";
+
+// Bootstrap Core
+@import "material-kit-pro/bootstrap/bootstrap";
+
+// Theme Core
+@import "material-kit-pro/theme-pro";
+
+// Custom Variables
+@import "material-kit-pro/custom/styles";
+
 // Carrousel de cards
 //#carouselObrasNovas .carousel-item{
 //    display: flex;

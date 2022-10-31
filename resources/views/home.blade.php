@@ -15,7 +15,7 @@
                 <div class="carousel-inner mb-4">
                     <div class="carousel-item active">
                         <div class="page-header min-vh-50 m-3 border-radius-xl"
-                             style="background-image: url('/assets/images/monalisa.jpg');">
+                             style="background-image: url({{asset('images/monalisa.jpg')}});">
                             <span class="mask bg-gradient-dark"></span>
                             <div class="container">
                                 <div class="row">
@@ -27,7 +27,7 @@
                                             1503 e 1506.</p>
                                     </div>
                                     <div class="col-lg-6 d-flex justify-content-center">
-                                        <img class="img-thumbnai" width="200px" src="assets/images/monalisa.jpg"
+                                        <img class="img-thumbnai" width="200px" src="{{asset('images/monalisa.jpg')}}"
                                              alt="Monalisa">
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="page-header min-vh-50 m-3 border-radius-xl"
-                             style="background-image: url('/assets/images/noite_estrelada.jpg');">
+                             style="background-image: url('{{asset('images/noite_estrelada.jpg')}}');">
                             <span class="mask bg-gradient-dark"></span>
                             <div class="container">
                                 <div class="row">
@@ -47,7 +47,7 @@
                                             madeira pintado pelo renascentista italiano entre os anos 1503 e 1506.</p>
                                     </div>
                                     <div class="col-lg-6 d-flex justify-content-center">
-                                        <img class="img-thumbnai" width="200px" src="assets/images/noite_estrelada.jpg"
+                                        <img class="img-thumbnai" width="200px" src="{{asset('images/noite_estrelada.jpg')}}"
                                              alt="Noite Estrelada">
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="page-header min-vh-50 m-3 border-radius-xl"
-                             style="background-image: url('/assets/images/aonda.jpg');">
+                             style="background-image: url('{{asset('images/aonda.jpg')}}');">
                             <span class="mask bg-gradient-dark"></span>
                             <div class="container">
                                 <div class="row">
@@ -67,7 +67,7 @@
                                             madeira pintado pelo renascentista italiano entre os anos 1503 e 1506.</p>
                                     </div>
                                     <div class="col-lg-6 d-flex justify-content-center">
-                                        <img class="img-thumbnai" width="200px" src="assets/images/aonda.jpg"
+                                        <img class="img-thumbnai" width="200px" src="{{asset('images/aonda.jpg')}}"
                                              alt="A Onda">
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                     Ipsum, mas a maioria sofreu algum tipo de alteração</p>
             </div>
             <div class="col-lg-6 col-sm-12 order-sm-last">
-                <img src="assets/images/map_word.png" alt="">
+                <img src="{{asset('images/map_word.png')}}" alt="">
             </div>
         </div>
     </section>
