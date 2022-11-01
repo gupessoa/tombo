@@ -1,10 +1,19 @@
 @extends('layouts.app')
 @section('content')
+{{--    {{ dd($page) }}--}}
+@php
+    $page = $page[0];
+    $outros = json_decode($page->outros);
+@endphp
+{{--{{dd($page->outros)}}--}}
     <section class="container-fluid hl-header bg-light">
         <div class=" container p-5 mb-4">
             <div class="container-fluid py-5">
-                <h1 class="h3 fw-bold">Arte e Alma</h1>
-                <p class="col-md-8">A arte é uma ação da alma, não do intelecto.</p>
+                <h1 class="h3 fw-bold">{{ $outros->titulo_um }}</h1>
+                <p class="col-md-8">{{ $outros->frase_um }}</p>
+                @if(!empty($outros->autor_um))
+                    <p class="col-md-8">{{ $outros->autor_um }}</p>
+                @endif
             </div>
         </div>
     </section>
@@ -93,18 +102,7 @@
         <h1 class="fw-light mt-3 h3">Arte no Mundo</h1>
         <div class="row">
             <div class="col-lg-6 col-sm-12 order-sm-first text-justify">
-                <p>Enta a arte separada geograficamente. Existem muitas variações disponíveis de passagens de Lorem
-                    Ipsum, mas a maioria sofreu algum tipo de alteração, seja por inserção de passagens com humor,
-                    ou palavras aleatórias que não parecem nem um pouco convincentes. edefinidos conforme
-                    necessário, fazendo deste o primeiro gerador de Lorem Ipsum autêntico da internet. Ele usa um
-                    dicionário com mais de 200 palavras.</p>
-                <p>Enta a arte separada geograficamente. Existem muitas variações disponíveis de passagens de Lorem
-                    Ipsum, mas a maioria sofreu algum tipo de alteração, seja por inserção de passagens com humor,
-                    ou palavras aleatórias que não parecem nem um pouco convincentes. edefinidos conforme
-                    necessário, fazendo deste o primeiro gerador de Lorem Ipsum autêntico da internet. Ele usa um
-                    dicionário com mais de 200 palavras.</p>
-                <p>Enta a arte separada geograficamente. Existem muitas variações disponíveis de passagens de Lorem
-                    Ipsum, mas a maioria sofreu algum tipo de alteração</p>
+                {{ $page->descricao }}
             </div>
             <div class="col-lg-6 col-sm-12 order-sm-last">
                 <img src="{{asset('images/map_word.png')}}" alt="">
@@ -252,10 +250,12 @@
         <div class=" container p-5 mb-4">
             <div class="container-fluid py-5">
                 <div>
-                    <h1 class="h3 fw-bold">Amor e Arte</h1>
+                    <h1 class="h3 fw-bold">{{ $outros->titulo_dois }}</h1>
                     <blockquote>
-                        Só o amor e arte tornam a existência tolerável.
-                        <br><cite>- William Maugham</cite>
+                        {{$outros->frase_dois}}
+                        @if(!empty($outros->autor_dois))
+                            <br><cite>- {{ $outros->autor_dois }}</cite>
+                        @endif
                     </blockquote>
                 </div>
             </div>
