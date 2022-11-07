@@ -1,7 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\{ArtistaController,
+    ContatoController,
+    HistoriaController,
+    HomeController,
+    MuseuController,
+    ObraController,
+    SobreController};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +20,17 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/obras', [ObraController::class, 'index'])->name('obras');
+Route::get('/artistas', [ArtistaController::class, 'index'])->name('artistas');
+Route::get('/museus', [MuseuController::class, 'index'])->name('museus');
+Route::get('/sobre', [SobreController::class, 'index'])->name('sobre');
+Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
+Route::get('/historia', [HistoriaController::class, 'index'])->name('historia');
+

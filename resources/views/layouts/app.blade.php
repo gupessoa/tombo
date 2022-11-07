@@ -7,6 +7,7 @@
         <title>Tombo</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,1,200" rel="stylesheet" />
 
         <!-- Icons -->
 {{--        <link href="./assets/css/nucleo-icons.css" rel="stylesheet">--}}
@@ -23,7 +24,7 @@
             <!-- Navbar Light -->
             <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html" rel="tooltip"
+                    <a class="navbar-brand" href="{{ route('home') }}" rel="tooltip"
                        title="Arte in Loco" data-placement="bottom" target="_blank">
                         Arte in Loco
                     </a>
@@ -42,39 +43,39 @@
                         <ul class="navbar-nav navbar-nav-hover mx-auto">
                             <li class="nav-item mx-2">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   href="obras.html">
+                                   href="{{ route('obras') }}">
                                     Obras
                                 </a>
                             </li>
 
                             <li class="nav-item mx-2">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   href="artistas.html">
+                                   href="{{ route('artistas') }}">
                                     Artistas
                                 </a>
                             </li>
                             <li class="nav-item mx-2">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   href="historia.html">
+                                   href="{{ route('historia') }}">
                                     História e Arte
                                 </a>
                             </li>
 
                             <li class="nav-item mx-2">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   href="museus.html">
+                                   href="{{ route('museus') }}">
                                     Museus
                                 </a>
                             </li>
                             <li class="nav-item mx-2">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   href="sobre.html">
+                                   href="{{ route('sobre') }}">
                                     Sobre Nós
                                 </a>
                             </li>
                             <li class="nav-item mx-2">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                                   href="contato.html">
+                                   href="{{ route('contato') }}">
                                     Contato
                                 </a>
                             </li>
@@ -91,22 +92,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mb-4 mx-auto text-center">
-                        <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        <a href="{{ route('obras') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
                             Obras
                         </a>
-                        <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        <a href="{{ route('artistas') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
                             Artistas
                         </a>
-                        <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        <a href="{{ route('historia') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
                             História e Arte
                         </a>
-                        <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        <a href="{{ route('museus') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
                             Museus
                         </a>
-                        <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        <a href="{{ route('sobre') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
                             Sobre Nós
                         </a>
-                        <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        <a href="{{ route('contato') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
                             Contato
                         </a>
                     </div>

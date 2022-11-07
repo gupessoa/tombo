@@ -2,7 +2,6 @@
 @section('content')
 {{--    {{ dd($page) }}--}}
 @php
-    $page = $page[0];
     $outros = json_decode($page->outros);
 @endphp
 {{--{{dd($page->outros)}}--}}
