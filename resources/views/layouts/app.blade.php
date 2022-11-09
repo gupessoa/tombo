@@ -124,26 +124,14 @@
             </div>
         </footer>
         <!--   Core JS Files   -->
-        @vite('resources/js/app.js')
-        @vite('resources/js/core/bootstrap.bundle.min.js')
-        @vite('resources/js/plugins/perfect-scrollbar.min.js')
-        @vite('resources/js/plugins/moment.min.js')
-        @vite('resources/js/plugins/nouislider.min.js')
-        @vite('resources/js/plugins/glidejs.min.js')
-        @vite('resources/js/plugins/choices.min.js')
-        @vite('resources/js/material-kit-pro.js')
-{{--        <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>--}}
-{{--        <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>--}}
-{{--        <script src="./assets/js/plugins/perfect-scrollbar.min.js" type="text/javascript"></script>--}}
-{{--        <script src="./assets/js/plugins/moment.min.js"></script>--}}
-{{--        <!-- Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->--}}
-{{--        <script src="./assets/js/plugins/nouislider.min.js"></script>--}}
-{{--        <!--  Plugin for the Carousel, full documentation here: http://jedrzejchalubek.com/  -->--}}
-{{--        <script src="./assets/js/plugins/glidejs.min.js"></script>--}}
-{{--        <!--	Plugin for Select, full documentation here: https://joshuajohnson.co.uk/Choices/ -->--}}
-{{--        <script src="./assets/js/plugins/choices.min.js" type="text/javascript"></script>--}}
-{{--        <!-- Control Center for Material Kit parallax effects, scripts for the example pages etc -->--}}
-{{--        <script src="./assets/js/material-kit-pro.min.js" type="text/javascript"></script>--}}
+{{--        @vite('resources/js/app.js')--}}
+{{--        @vite('resources/js/core/bootstrap.bundle.min.js')--}}
+{{--        @vite('resources/js/plugins/perfect-scrollbar.min.js')--}}
+{{--        @vite('resources/js/plugins/moment.min.js')--}}
+{{--        @vite('resources/js/plugins/nouislider.min.js')--}}
+{{--        @vite('resources/js/plugins/glidejs.min.js')--}}
+{{--        @vite('resources/js/plugins/choices.min.js')--}}
+{{--        @vite('resources/js/material-kit-pro.js')--}}
     @stack('js')
     </body>
 </html>
