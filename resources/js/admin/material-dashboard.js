@@ -1,4 +1,7 @@
 "use strict";
+
+import {PerfectScrollbar} from '/resources/js/admin/plugins/perfect-scrollbar.min'
+
 (function() {
   var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
@@ -518,8 +521,8 @@ var total = document.querySelectorAll('.nav-pills');
 function initNavs() {
   total.forEach(function(item, i) {
     var moving_div = document.createElement('div');
-    var li_active = item.querySelector(".nav-link.active");
-    var tab = li_active.cloneNode();
+    var first_li = item.querySelector('li:first-child .nav-link');
+    var tab = first_li.cloneNode();
     tab.innerHTML = "-";
 
     moving_div.classList.add('moving-tab', 'position-absolute', 'nav-link');
@@ -529,31 +532,9 @@ function initNavs() {
     var list_length = item.getElementsByTagName("li").length;
 
     moving_div.style.padding = '0px';
+    moving_div.style.width = item.querySelector('li:nth-child(1)').offsetWidth + 'px';
+    moving_div.style.transform = 'translate3d(0px, 0px, 0px)';
     moving_div.style.transition = '.5s ease';
-
-    let li = item.querySelector(".nav-link.active").parentElement;
-
-    if (li) {
-      let nodes = Array.from(li.closest('ul').children); // get array
-      let index = nodes.indexOf(li) + 1;
-
-      let sum = 0;
-      if (item.classList.contains('flex-column')) {
-        for (var j = 1; j <= nodes.indexOf(li); j++) {
-          sum += item.querySelector('li:nth-child(' + j + ')').offsetHeight;
-        }
-        moving_div.style.transform = 'translate3d(0px,' + sum + 'px, 0px)';
-        moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px';
-        moving_div.style.height = item.querySelector('li:nth-child(' + j + ')').offsetHeight;
-      } else {
-        for (var j = 1; j <= nodes.indexOf(li); j++) {
-          sum += item.querySelector('li:nth-child(' + j + ')').offsetWidth;
-        }
-        moving_div.style.transform = 'translate3d(' + sum + 'px, 0px, 0px)';
-        moving_div.style.width = item.querySelector('li:nth-child(' + index + ')').offsetWidth + 'px';
-
-      }
-    }
 
     item.onmouseover = function(event) {
       let target = getEventTarget(event);
@@ -1028,91 +1009,6 @@ function darkMode(el) {
     el.removeAttribute("checked");
   }
 };
-
-// flatpickr init
-if (document.querySelector('.datepicker')) {
-  flatpickr('.datepicker', {
-    mode: "range"
-  });
-}
-
-// validation
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const password2 = document.getElementById('confirm_password');
-
-//Show input error messages
-function showError(input, message) {
-  const formControl = input.parentElement;
-  formControl.className = 'input-group input-group-outline my-5 is-invalid is-filled';
-  const small = formControl.querySelector('small');
-  small.innerText = message;
-}
-
-//show success colour
-function showSucces(input) {
-  const formControl = input.parentElement;
-  formControl.className = 'input-group input-group-outline my-5 is-valid is-filled';
-}
-
-//check email is valid
-function checkEmail(input) {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (re.test(input.value.trim())) {
-    showSucces(input)
-  } else {
-    showError(input, 'Email is not invalid');
-  }
-}
-
-//checkRequired fields
-function checkRequired(inputArr) {
-  inputArr.forEach(function(input) {
-    if (input.value.trim() === '') {
-      showError(input, `${getFieldName(input)} is required`)
-    } else {
-      showSucces(input);
-    }
-  });
-}
-
-
-//check input Length
-function checkLength(input, min, max) {
-  if (input.value.length < min) {
-    showError(input, `${getFieldName(input)} must be at least ${min} characters`);
-  } else if (input.value.length > max) {
-    showError(input, `${getFieldName(input)} must be les than ${max} characters`);
-  } else {
-    showSucces(input);
-  }
-}
-
-//get FieldName
-function getFieldName(input) {
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-// check passwords match
-function checkPasswordMatch(input1, input2) {
-  if (input1.value !== input2.value) {
-    showError(input2, 'Passwords do not match');
-  }
-}
-
-
-//Event Listeners
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  checkRequired([username, email, password, password2]);
-  checkLength(username, 3, 15);
-  checkLength(password, 6, 25);
-  checkEmail(email);
-  checkPasswordMatch(password, password2);
-});
 
 var material = {
   initFullCalendar: function() {
