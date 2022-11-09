@@ -34,3 +34,9 @@ Route::get('/sobre', [SobreController::class, 'index'])->name('sobre');
 Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
 Route::get('/historia', [HistoriaController::class, 'index'])->name('historia');
 
+//Route::middleware(['auth:web'])->prefix('admin')->group( function(){
+Route::prefix('admin')->group( function(){
+    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+});
+

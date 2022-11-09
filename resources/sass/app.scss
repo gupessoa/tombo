@@ -1,8 +1,26 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+//// Fonts
+//@import url('https://fonts.bunny.net/css?family=Nunito');
+//
+//// Variables
+//@import 'variables';
+//
+//// Bootstrap
+//@import 'bootstrap/scss/bootstrap';
 
-// Variables
-@import 'variables';
+// Bootstrap Functions
+@import "material-kit-pro/bootstrap/functions";
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+// Custom Variables
+@import "material-kit-pro/custom/variables";
+
+// Theme Variables
+@import "material-kit-pro/variables";
+
+// Bootstrap Core
+@import "material-kit-pro/bootstrap/bootstrap";
+
+// Theme Core
+@import "material-kit-pro/theme-pro";
+
+// Custom Variables
+@import "material-kit-pro/custom/styles";
