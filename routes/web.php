@@ -43,5 +43,7 @@ Route::prefix('admin')->group( function(){
     Route::resource('obras', App\Http\Controllers\Admin\ObraController::class, ['as' => 'admin']);
     Route::resource('museus', App\Http\Controllers\Admin\MuseuController::class, ['as' => 'admin']);
     Route::resource('artistas', App\Http\Controllers\Admin\ArtistaController::class, ['as' => 'admin']);
+    Route::resource('grupos', App\Http\Controllers\Admin\GrupoController::class, ['as' => 'admin']);
+    Route::resource('eras', App\Http\Controllers\Admin\EraController::class, ['as' => 'admin']);
 });
 
