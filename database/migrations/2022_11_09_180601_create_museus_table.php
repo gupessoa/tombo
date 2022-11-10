@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('museus', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('outro_nome');
+            $table->string('outro_nome')->nullable();
             $table->string('endereco')->nullable();
             $table->string('cidade');
             $table->string('pais');

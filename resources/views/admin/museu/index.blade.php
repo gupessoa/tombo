@@ -31,7 +31,9 @@
             @if(session()->get('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session()->get('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             @endif
                 <table class="table table-responsive table-stripedtable-sm">
@@ -61,11 +63,13 @@
                                             </a>
                                         </div>
                                         <div class="d-md-none d-table-cell">
-                                            <a href="{{ route('admin.museus.edit', $cliente) }}" class="btn btn-primary m-0 btn-sm d-flex">
+                                            <a href="{{ route('admin.museus.edit', $museu) }}" class="btn btn-primary m-0 btn-sm d-flex">
                                                 <span class="material-symbols-outlined">edit</span>
                                             </a>
                                         </div>
-                                        <form class="ms-2" action="{{ route('admin.museus.destroy', $cliente->id)}}" method="POST">
+                                        <form class="ms-2" action="{{ route('admin.museus.destroy', $museu->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
                                             <button class="d-none d-md-inline-flex btn btn-sm btn-danger border-0 ml-2 align-items-center gap-1" type="submit">
                                                 <span class="material-symbols-outlined">delete</span>
                                                 <span>Excluir</span>
@@ -76,13 +80,13 @@
                                             </button>
                                         </form>
                                         <div class="d-none d-md-table-cell">
-                                            <a href="{{ route('admin.museus.show', $cliente->id) }}" class="btn btn-primary m-0 btn-sm btn_detalhes d-flex align-items-center gap-1" > <!-- data-index="" data-bs-toggle="modal" data-bs-target="#modalDetalhes" -->
+                                            <a href="{{ route('admin.museus.show', $museu->id) }}" class="btn btn-primary m-0 btn-sm btn_detalhes d-flex align-items-center gap-1" > <!-- data-index="" data-bs-toggle="modal" data-bs-target="#modalDetalhes" -->
                                                 <span class="material-symbols-outlined">visibility</span>
                                                 <span>Detalhes</span>
                                             </a>
                                         </div>
                                         <div class="d-md-none d-table-cell">
-                                            <a href="{{ route('admin.museus.show', $cliente->id) }}" class="btn btn-primary m-0 btn_detalhes btn-sm d-flex align-items-center gap-1">
+                                            <a href="{{ route('admin.museus.show', $museu->id) }}" class="btn btn-primary m-0 btn_detalhes btn-sm d-flex align-items-center gap-1">
                                                 <span class="material-symbols-outlined">visibility</span>
                                             </a>
                                         </div>

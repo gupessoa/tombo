@@ -13,7 +13,7 @@ class MuseuRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class MuseuRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required',
+            'outro_nome' => '',
+            'endereco' => '',
+            'cidade' => 'required',
+            'pais' => 'required'
         ];
     }
 }
