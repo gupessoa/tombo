@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Museu extends Model
+class Era extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
         'nome',
-        'outro_nome',
-        'endereco',
-        'cidade',
-        'pais'
+        'data_incial',
+        'data_final'
     ];
 }

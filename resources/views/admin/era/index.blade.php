@@ -5,15 +5,15 @@
         <div class="header  d-flex flex-column justify-content-between align-items-center mt-5">
             <div class="d-flex justify-content-between w-100 mb-3">
                 <div>
-                    <h1 class="h2 d-block mb-0 tiny-title">Museus</h1>
+                    <h1 class="h2 d-block mb-0 tiny-title">Eras</h1>
                 </div>
                 <div class="flex-column align-content-center justify-content-center">
-                    <a class="btn  btn-primary" href="{{ route('admin.museus.create') }}">+ Museu</a>
+                    <a class="btn  btn-primary" href="{{ route('admin.eras.create') }}">+ Era</a>
                 </div>
             </div>
         </div>
         <div class="ms-md-auto pe-md-3 d-flex align-items-center justify-content-end">
-           <form action="{{ route('admin.museus.index') }}" method="GET" class="form">
+           <form action="{{ route('admin.eras.index') }}" method="GET" class="form">
                @csrf
                @method('GET')
                <div class="input-group input-group-dynamic">
@@ -40,34 +40,32 @@
                     <thead>
                         <tr class="border-bottom-white">
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cidade</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pais</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Obras</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Inicial</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Final</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Opções</th>
                         </tr>
                     </thead>
                     <tbody>
 {{--                    {{dd($museus)}}--}}
-                        @if($museus->total())
-                            @foreach($museus as $museu)
+                        @if($eras->total())
+                            @foreach($eras as $era)
                                 <tr>
-                                    <td class="">{{ $museu->nome }}</td>
-                                    <td class="">{{ $museu->cidade }}</td>
-                                    <td class="">{{ $museu->pais }}</td>
-                                    <td class="text-center">?</td>
+                                    <td class="">{{ $era->nome }}</td>
+                                    <td class="">{{ $era->data_inicial }}</td>
+                                    <td class="">{{ $era->data_final }}</td>
                                     <td class="d-flex justify-content-center gap-1">
                                         <div class="d-none d-md-table-cell">
-                                            <a href="{{ route('admin.museus.edit', $museu) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
+                                            <a href="{{ route('admin.eras.edit', $era) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
                                                 <span class="material-symbols-outlined">edit</span>
                                                <span>Editar</span>
                                             </a>
                                         </div>
                                         <div class="d-md-none d-table-cell">
-                                            <a href="{{ route('admin.museus.edit', $museu) }}" class="btn btn-primary m-0 btn-sm d-flex">
+                                            <a href="{{ route('admin.eras.edit', $era) }}" class="btn btn-primary m-0 btn-sm d-flex">
                                                 <span class="material-symbols-outlined">edit</span>
                                             </a>
                                         </div>
-                                        <form class="ms-2" action="{{ route('admin.museus.destroy', $museu->id)}}" method="POST">
+                                        <form class="ms-2" action="{{ route('admin.eras.destroy', $era->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="d-none d-md-inline-flex btn btn-sm btn-danger border-0 ml-2 align-items-center gap-1" type="submit">
@@ -80,13 +78,13 @@
                                             </button>
                                         </form>
                                         <div class="d-none d-md-table-cell">
-                                            <a href="{{ route('admin.museus.show', $museu->id) }}" class="btn btn-primary m-0 btn-sm btn_detalhes d-flex align-items-center gap-1" > <!-- data-index="" data-bs-toggle="modal" data-bs-target="#modalDetalhes" -->
+                                            <a href="{{ route('admin.eras.show', $era->id) }}" class="btn btn-primary m-0 btn-sm btn_detalhes d-flex align-items-center gap-1" > <!-- data-index="" data-bs-toggle="modal" data-bs-target="#modalDetalhes" -->
                                                 <span class="material-symbols-outlined">visibility</span>
                                                 <span>Detalhes</span>
                                             </a>
                                         </div>
                                         <div class="d-md-none d-table-cell">
-                                            <a href="{{ route('admin.museus.show', $museu->id) }}" class="btn btn-primary m-0 btn_detalhes btn-sm d-flex align-items-center gap-1">
+                                            <a href="{{ route('admin.eras.show', $era->id) }}" class="btn btn-primary m-0 btn_detalhes btn-sm d-flex align-items-center gap-1">
                                                 <span class="material-symbols-outlined">visibility</span>
                                             </a>
                                         </div>
@@ -98,7 +96,7 @@
                         @endif
                     </tbody>
                 </table>
-            {{ $museus->links() }}
+            {{ $eras->links() }}
         </div>
     </div>
 @endsection

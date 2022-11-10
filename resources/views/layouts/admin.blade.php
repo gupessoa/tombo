@@ -88,6 +88,18 @@
                     <span class="nav-link-text ms-2 ps-1">Museus</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.grupos.index') }}">
+                    <i class="material-icons-round">group</i>
+                    <span class="nav-link-text ms-2 ps-1">Grupos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.eras.index') }}">
+                    <i class="material-icons-round">calendar_month</i>
+                    <span class="nav-link-text ms-2 ps-1">Eras</span>
+                </a>
+            </li>
         </ul>
     </div>
 
