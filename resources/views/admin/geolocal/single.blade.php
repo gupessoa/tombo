@@ -5,11 +5,10 @@
         <div class="header  d-flex flex-column justify-content-between align-items-center mt-5">
             <div class="d-flex justify-content-between w-100 mb-3">
                 <div>
-                    <h1 class="h2 d-block mb-0 tiny-title">{{$era->nome}}</h1>
-                    <p class="h6 mb-0 tiny-title font-weight-light">{{$era->data_inicial}} - {{$era->data_final }}</p>
+                    <h1 class="h2 d-block mb-0 tiny-title">{{$geolocal->nome}}</h1>
                 </div>
                 <div class="btn-toolbar flex-column align-content-center justify-content-center">
-                    <a class="btn  btn-primary" href="{{ route('admin.eras.index') }}">Voltar</a>
+                    <a class="btn  btn-primary" href="{{ route('admin.geolocals.index') }}">Voltar</a>
                 </div>
             </div>
         </div>
@@ -21,16 +20,20 @@
                     <tr class="border-bottom-white">
                         <th class="">#</th>
                         <th class="text-center">Nome</th>
+                        <th class="text-center">Data Inicial</th>
+                        <th class="text-center">Data Final</th>
                         <th class="text-center">Opções</th>
                     </tr>
                 </thead>
                 <tbody>
-{{--                @if(count($era->movimentos) > 0)--}}
+{{--                @if(count($museu->obras) > 0)--}}
                     <tr>
                         <td>1</td>
-                        <td class="text-center">Impressionismo</td>
+                        <td class="text-center">Modernismo</td>
+                        <td class="text-center">15/10/1640</td>
+                        <td class="text-center">15/10/1660</td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-sm btn-primary"> + Detalhes</a>
+                            <a href="" class="btn btn-sm btn-primary"> + Detalhes</a>
                         </td>
                     </tr>
 {{--                @else--}}

@@ -24,3 +24,11 @@
 
 // Custom Variables
 @import "material-kit-pro/custom/styles";
+
+
+body > main > div.container-fluid.py-4.h-100.w-100 > div > div.list.mt-5 > form > div:nth-child(4) > div:nth-child(3) > div > span > span.selection > span{
+    background-color: transparent !important;
+        border: 1px solid #d2d6da !important;
+}
+
+

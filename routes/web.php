@@ -44,6 +44,8 @@ Route::prefix('admin')->group( function(){
     Route::resource('museus', App\Http\Controllers\Admin\MuseuController::class, ['as' => 'admin']);
     Route::resource('artistas', App\Http\Controllers\Admin\ArtistaController::class, ['as' => 'admin']);
     Route::resource('grupos', App\Http\Controllers\Admin\GrupoController::class, ['as' => 'admin']);
+    Route::resource('geolocals', App\Http\Controllers\Admin\GeolocalController::class, ['as' => 'admin']);
     Route::resource('eras', App\Http\Controllers\Admin\EraController::class, ['as' => 'admin']);
+    Route::resource('movimentos', App\Http\Controllers\Admin\MovimentoController::class, ['as' => 'admin']);
 });
 

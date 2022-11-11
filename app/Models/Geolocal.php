@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Era extends Model
+class Geolocal extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nome',
-        'data_incial',
-        'data_final'
-    ];
+    protected $fillable = ['nome'];
 
     public function movimentos()
     {
-        return $this->hasMany(Movimento::class, 'id_era', 'id');
+        return $this->belongsToMany(Movimento::class, 'movimentos_geolocals', 'id_movimentos', 'id_geolocal');
     }
 }
