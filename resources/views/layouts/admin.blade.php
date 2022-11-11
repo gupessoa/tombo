@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
-    <title>Material Dashboard 2 PRO by Creative Tim</title>
+    <title>Arte in Loco</title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"/>
@@ -104,6 +104,12 @@
                 <a class="nav-link" href="{{ route('admin.geolocals.index') }}">
                     <i class="material-icons-round">public</i>
                     <span class="nav-link-text ms-2 ps-1">Geolocalização</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.movimentos.index') }}">
+                    <i class="material-icons-round">dataset</i>
+                    <span class="nav-link-text ms-2 ps-1">Movimentos</span>
                 </a>
             </li>
         </ul>
@@ -226,6 +232,7 @@
 {{--@vite('resources/js/admin/plugins/jkanban/jkanban.js')--}}
 @vite('resources/js/admin/plugins/dragula/dragula.js')
 @vite('resources/js/admin/material-dashboard.js')
+@stack('js')
 </body>
 
 </html>

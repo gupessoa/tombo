@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MovimentoRequest;
 use App\Http\Requests\UpdateMovimentoRequest;
+use App\Models\Era;
 use App\Models\Movimento;
 
 class MovimentoController extends Controller
@@ -16,7 +17,8 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-        //
+        $movimentos = Movimento::paginate(10);
+        return view('admin.movimento.index', ['movimentos' => $movimentos]);
     }
 
     /**
@@ -26,7 +28,8 @@ class MovimentoController extends Controller
      */
     public function create()
     {
-        //
+        $eras = Era::all();
+        return view('admin.movimento.create', ['eras' => $eras]);
     }
 
     /**
@@ -37,7 +40,17 @@ class MovimentoController extends Controller
      */
     public function store(MovimentoRequest $request)
     {
-        //
+        dd($request->all());
+        $movimento = new Movimento([
+            'nome' => $request->nome,
+            'data_inicial' =>$request->data_inicial,
+            'data_final' => $request->data_final,
+            'id_era' => $request->id_era
+        ]);
+
+        $movimento->saveOrFail();
+
+        return redirect('/admin/movimentos/')->with('success', 'Movimento cadastrado com sucesso!');
     }
 
     /**
@@ -48,7 +61,7 @@ class MovimentoController extends Controller
      */
     public function show(Movimento $movimento)
     {
-        //
+        return view('admin.movimento.single', ['movimento' => $movimento]);
     }
 
     /**
@@ -59,19 +72,26 @@ class MovimentoController extends Controller
      */
     public function edit(Movimento $movimento)
     {
-        //
+        return view('admin.movimento.edit', ['movimento' => $movimento]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMovimentoRequest  $request
+     * @param  \App\Http\Requests\MovimentoRequest  $request
      * @param  \App\Models\Movimento  $movimento
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMovimentoRequest $request, Movimento $movimento)
+    public function update(MovimentoRequest $request, Movimento $movimento)
     {
-        //
+        $movimento->nome = $request->nome;
+        $movimento->data_inicial >$request->data_inicial;
+        $movimento->data_final = $request->data_final;
+        $movimento->id_era = $request->id_era;
+
+        $movimento->updateOrFail();
+
+        return redirect('/admin/movimentos/')->with('success', 'Movimento atualizado com sucesso!');
     }
 
     /**
@@ -82,6 +102,8 @@ class MovimentoController extends Controller
      */
     public function destroy(Movimento $movimento)
     {
-        //
+        $movimento->deleteOrFail();
+
+        return redirect('/admin/movimentos/')->with('success', 'Movimento excluido com sucesso!');
     }
 }

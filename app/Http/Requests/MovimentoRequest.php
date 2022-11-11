@@ -13,7 +13,7 @@ class MovimentoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class MovimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required',
+            'data_inicial' => 'required',
+            'data_final' => 'required',
+            'id_era' => 'required'
         ];
     }
 }

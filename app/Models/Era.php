@@ -14,4 +14,9 @@ class Era extends Model
         'data_incial',
         'data_final'
     ];
+
+    public function movimentos()
+    {
+        return $this->hasMany(Movimento::class, 'id_era', 'id');
+    }
 }

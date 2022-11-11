@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('movimentos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->integer('data_inicial');
+            $table->integer('data_final');
             $table->foreignId('id_era')->references('id')->on('eras');
             $table->timestamps();
         });
