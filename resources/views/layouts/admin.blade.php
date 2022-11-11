@@ -100,6 +100,12 @@
                     <span class="nav-link-text ms-2 ps-1">Eras</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.geolocals.index') }}">
+                    <i class="material-icons-round">public</i>
+                    <span class="nav-link-text ms-2 ps-1">Geolocalização</span>
+                </a>
+            </li>
         </ul>
     </div>
 
