@@ -16,6 +16,8 @@ class Movimento extends Model
         'id_era'
     ];
 
+    public const RELATIONSHIP_ARTISTAS_MOVIMENTOS = 'artistas_movimentos';
+
     public function geolocals()
     {
         return $this->belongsToMany(Geolocal::class, 'movimentos_geolocals', 'id_geolocal', 'id_movimento');
@@ -24,5 +26,10 @@ class Movimento extends Model
     public function era()
     {
         return $this->belongsTo(Era::class, 'id_era', 'id');
+    }
+
+    public function artistas()
+    {
+        return $this->belongsToMany(Artista::class, self::RELATIONSHIP_ARTISTAS_MOVIMENTOS, 'movimento_id', 'artista_id');
     }
 }
