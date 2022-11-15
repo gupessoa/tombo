@@ -40,7 +40,7 @@ class MovimentoController extends Controller
      */
     public function store(MovimentoRequest $request)
     {
-        dd($request->all());
+
         $movimento = new Movimento([
             'nome' => $request->nome,
             'data_inicial' =>$request->data_inicial,
@@ -72,7 +72,8 @@ class MovimentoController extends Controller
      */
     public function edit(Movimento $movimento)
     {
-        return view('admin.movimento.edit', ['movimento' => $movimento]);
+        $eras = Era::all();
+        return view('admin.movimento.edit', ['movimento' => $movimento, 'eras' => $eras]);
     }
 
     /**

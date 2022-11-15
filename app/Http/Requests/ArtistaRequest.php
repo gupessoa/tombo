@@ -13,7 +13,7 @@ class ArtistaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class ArtistaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required',
+            'movimentos' => 'required',
+            'grupos' => 'required',
+            'ano_nasc' => '',
+            'local_nasc' => '',
+            'ano_morte' => '',
+            'local_morte' => '',
         ];
     }
 }
