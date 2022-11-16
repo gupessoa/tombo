@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('movimentos_geolocals', function (Blueprint $table) {
-            $table->foreignId('id_movimento')->references('id')->on('movimentos');
-            $table->foreignId('id_geolocal')->references('id')->on('geolocals');
+            $table->id();
+            $table->unsignedBigInteger('id_geolocal');
+            $table->foreign('id_geolocal')->references('id')->on('geolocals')->onDelete('cascade');;
+            $table->unsignedBigInteger('id_movimento');
+            $table->foreign('id_movimento')->references('id')->on('movimentos')->onDelete('cascade');;
+            $table->timestamps();
         });
     }
 

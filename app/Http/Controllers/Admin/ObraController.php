@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Artista;
+use App\Models\Museu;
+use App\Models\Obra;
 use Illuminate\Http\Request;
 
 class ObraController extends Controller
@@ -14,7 +17,8 @@ class ObraController extends Controller
      */
     public function index()
     {
-        //
+        $obras = Obra::paginate(10);
+        return view('admin.obra.index', ['obras' => $obras]);
     }
 
     /**
@@ -24,7 +28,12 @@ class ObraController extends Controller
      */
     public function create()
     {
-        //
+        $artistas = Artista::all();
+        $museus = Museu::all();
+        return view('admin.obra.create',[
+            'artistas' => $artistas,
+            'museus' => $museus
+        ]);
     }
 
     /**
@@ -35,7 +44,19 @@ class ObraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $obra = new Obra([
+            "nome" => $request->nome,
+            "nome_outro" => $request->nome_outro,
+            "data" => $request->data,
+            "tipo" => $request->tipo,
+            "tamanho" => $request->tamanho,
+            "artista_id" => $request->artista,
+            "museu_id" => $request->local,
+        ]);
+
+        $obra->saveOrFail();
+
+        return redirect('/admin/obras')->with('success', 'Obra adicionada com Sucesso');
     }
 
     /**
@@ -46,7 +67,8 @@ class ObraController extends Controller
      */
     public function show($id)
     {
-        //
+        $obra = Obra::find($id);
+        return view('admin.obra.single', ['obra' => $obra]);
     }
 
     /**
@@ -57,7 +79,14 @@ class ObraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $obra = Obra::find($id);
+        $artistas = Artista::all();
+        $museus = Museu::all();
+        return view('admin.obra.edit', [
+            'obra' => $obra,
+            'artistas' => $artistas,
+            'museus' => $museus
+            ]);
     }
 
     /**
@@ -80,6 +109,8 @@ class ObraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $obra = Obra::find($id);
+        $obra->deleteOrFail();
+        return redirect('/admin/obras')->with('success', 'Obra deletada com sucesso!');
     }
 }

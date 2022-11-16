@@ -27,7 +27,8 @@ class MovimentoRequest extends FormRequest
             'nome' => 'required',
             'data_inicial' => 'required',
             'data_final' => 'required',
-            'id_era' => 'required'
+            'id_era' => 'required',
+            'geolocal' => 'required'
         ];
     }
 }

@@ -16,4 +16,9 @@ class Museu extends Model
         'cidade',
         'pais'
     ];
+
+    public function obras()
+    {
+        return $this->hasMany(Obra::class, 'museu_id', 'id');
+    }
 }

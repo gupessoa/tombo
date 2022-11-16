@@ -24,7 +24,13 @@ class ObraRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome'=> 'required',
+            'nome_outro'=> 'required',
+            'data'=> 'required',
+            'tipo'=> 'required',
+            'tamanho'=> 'required',
+            'artista'=> 'required',
+            'local'=> 'required',
         ];
     }
 }
