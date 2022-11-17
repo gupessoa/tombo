@@ -13,6 +13,6 @@ class Geolocal extends Model
 
     public function movimentos()
     {
-        return $this->belongsToMany(Movimento::class, 'movimentos_geolocals', 'id_movimentos', 'id_geolocal');
+        return $this->belongsToMany(Movimento::class, 'movimentos_geolocals', 'id_geolocal', 'id_movimentos');
     }
 }

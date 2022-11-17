@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @push('css')
-{{--    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>--}}
-{{--    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>--}}
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endpush
 @section('content')
     <div class="container">
@@ -31,24 +31,34 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
                             <label class="form-label">Data Inicial</label>
                             <input type="number" step="1"  min="-5000000" max="2022" name="data_inicial" id="data_inicial" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
                             <label class="form-label">Data Final</label>
                             <input type="number" step="1"  min="-5000000" max="2022" name="data_final" id="data_final" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
                             <select id="id_era" class="form-control" name="id_era">
-                                <option value="">Selecione a Era</option>
                                 @foreach($eras as $era)
                                     <option value="{{ $era->id }}">{{ $era->nome }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group input-group-outline my-3">
+                            <select id="geolocal" class="form-control" name="geolocal[]" multiple="multiple">
+                                @foreach($geolocals as $geo)
+                                    <option value="{{ $geo->id }}">{{ $geo->nome }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -63,10 +73,13 @@
 @endsection
 @push('js')
     <script>
-        // $(document).ready(function() {
-        //     $('#id_era').select2({
-        //         placeholder: 'Select an option'
-        //     });
-        // });
+        $(document).ready(function() {
+            $('#id_era').select2({
+                placeholder: 'Selecione uma Era'
+            });
+            $('#geolocal').select2({
+                placeholder: 'Selecione uma Geolocalização'
+            });
+        });
     </script>
 @endpush

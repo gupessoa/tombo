@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('obras', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->integer('data');
+            $table->string('nome_outro');
+            $table->string('tipo');
+            $table->string('tamanho');
+            $table->unsignedBigInteger('artista_id');
+            $table->foreign('artista_id')->references('id')->on('artistas')->onDelete('cascade');
+            $table->unsignedBigInteger('museu_id');
+            $table->foreign('museu_id')->references('id')->on('museus')->onDelete('cascade');
             $table->timestamps();
         });
     }

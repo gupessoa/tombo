@@ -28,4 +28,9 @@ class Artista extends Model
     {
         return $this->belongsToMany(Movimento::class,self::RELATIONSHIP_ARTISTAS_MOVIMENTOS,'artista_id','movimento_id');
     }
+
+    public function obras()
+    {
+        return $this->hasMany(Obra::class, 'artista_id', 'id');
+    }
 }

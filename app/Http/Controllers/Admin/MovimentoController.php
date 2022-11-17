@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MovimentoRequest;
 use App\Http\Requests\UpdateMovimentoRequest;
 use App\Models\Era;
+use App\Models\Geolocal;
 use App\Models\Movimento;
 
 class MovimentoController extends Controller
@@ -29,7 +30,11 @@ class MovimentoController extends Controller
     public function create()
     {
         $eras = Era::all();
-        return view('admin.movimento.create', ['eras' => $eras]);
+        $geolocals = Geolocal::all();
+        return view('admin.movimento.create', [
+            'eras' => $eras,
+            'geolocals' => $geolocals
+        ]);
     }
 
     /**
@@ -40,7 +45,7 @@ class MovimentoController extends Controller
      */
     public function store(MovimentoRequest $request)
     {
-
+//        dd($request->geolocal);
         $movimento = new Movimento([
             'nome' => $request->nome,
             'data_inicial' =>$request->data_inicial,
@@ -49,6 +54,8 @@ class MovimentoController extends Controller
         ]);
 
         $movimento->saveOrFail();
+        $movimento->geolocals()->sync($request->geolocal);
+
 
         return redirect('/admin/movimentos/')->with('success', 'Movimento cadastrado com sucesso!');
     }
@@ -103,6 +110,7 @@ class MovimentoController extends Controller
      */
     public function destroy(Movimento $movimento)
     {
+        $movimento->geolocals()->detach();
         $movimento->deleteOrFail();
 
         return redirect('/admin/movimentos/')->with('success', 'Movimento excluido com sucesso!');
