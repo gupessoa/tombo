@@ -28,4 +28,10 @@ class Obra extends Model
     {
         return $this->belongsTo(Museu::class, 'museu_id', 'id');
     }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
 }

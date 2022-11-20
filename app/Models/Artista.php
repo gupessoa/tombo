@@ -10,11 +10,12 @@ class Artista extends Model
     use HasFactory;
 
     protected $fillable = [
-      'nome',
-      'ano_nasc',
-      'local_nasc',
-      'ano_morte',
-      'local_morte'
+        'nome',
+        'ano_nasc',
+        'local_nasc',
+        'ano_morte',
+        'local_morte',
+        'imagem'
     ];
 
     public const RELATIONSHIP_ARTISTAS_MOVIMENTOS = 'artistas_movimentos';
@@ -33,4 +34,10 @@ class Artista extends Model
     {
         return $this->hasMany(Obra::class, 'artista_id', 'id');
     }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
 }

@@ -1,5 +1,48 @@
 @extends('layouts.admin')
 @push('css')
+    <style>
+        #picture_input {
+            display: none;
+        }
+
+        .picture {
+            width: 400px;
+            aspect-ratio: 16/9;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            border: 2px dashed currentcolor;
+            cursor: pointer;
+            font-family: sans-serif;
+            transition: color 300ms ease-in-out, background 300ms ease-in-out;
+            outline: none;
+            overflow: hidden;
+        }
+
+        .picture:hover {
+            color: #777;
+            background: #ccc;
+        }
+
+        .picture:active {
+            border-color: turquoise;
+            color: turquoise;
+            background: #eee;
+        }
+
+        .picture:focus {
+            color: #777;
+            background: #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .picture_img {
+            max-width: 100%;
+        }
+
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -19,7 +62,7 @@
             </div>
         </div>
         <div class="list mt-5">
-            <form action="{{ route('admin.obras.store') }}" method="POST">
+            <form action="{{ route('admin.obras.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="row">
@@ -75,7 +118,14 @@
                                     <option value="{{$museu->id}}">{{ $museu->nome }}</option>
                                 @endforeach
                             </select>
+                        </div>
                     </div>
+                </div>
+                <div class="mt-4 d-flex justify-content-center">
+                    <label class="picture" for="picture_input" tabIndex="0">
+                        <span class="picture_image">Click e selecione sua imagem.</span>
+                    </label>
+                    <input type="file" name="imagem" id="picture_input" accept="image/*">
                 </div>
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-sm btn-primary d-block">Cadastrar</button>
@@ -94,6 +144,35 @@
             $('.local').select2({
                 maximumSelectionLength: 2,
                 placeholder: 'Selecione o local/museu'
+            });
+
+            const inputFile = document.querySelector("#picture_input");
+            const pictureImage = document.querySelector(".picture_image");
+            const pictureImageTxt = "Clique e selecione uma imagem";
+            pictureImage.innerHTML = pictureImageTxt;
+
+            inputFile.addEventListener("change", function (e) {
+                const inputTarget = e.target;
+                const file = inputTarget.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.addEventListener("load", function (e) {
+                        const readerTarget = e.target;
+
+                        const img = document.createElement("img");
+                        img.src = readerTarget.result;
+                        img.classList.add("picture_img");
+
+                        pictureImage.innerHTML = "";
+                        pictureImage.appendChild(img);
+                    });
+
+                    reader.readAsDataURL(file);
+                } else {
+                    pictureImage.innerHTML = pictureImageTxt;
+                }
             });
         });
     </script>
