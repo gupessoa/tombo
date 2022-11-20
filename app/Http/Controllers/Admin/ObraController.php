@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ObraRequest;
 use App\Models\Artista;
 use App\Models\Museu;
 use App\Models\Obra;
@@ -44,6 +45,7 @@ class ObraController extends Controller
      */
     public function store(Request $request)
     {
+
         $obra = new Obra([
             "nome" => $request->nome,
             "nome_outro" => $request->nome_outro,
@@ -55,6 +57,11 @@ class ObraController extends Controller
         ]);
 
         $obra->saveOrFail();
+
+        if($imagem = $request->file('imagem')){
+            $obra->image()->create(['image' => $imagem->store('obras', 'public')]);
+        }
+
 
         return redirect('/admin/obras')->with('success', 'Obra adicionada com Sucesso');
     }
@@ -92,11 +99,11 @@ class ObraController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+//     * @param  Illuminate\Http\Request\ObraRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ObraRequest $request, $id)
     {
         //
     }

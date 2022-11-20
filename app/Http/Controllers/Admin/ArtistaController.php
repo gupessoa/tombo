@@ -44,6 +44,7 @@ class ArtistaController extends Controller
      */
     public function store(Request $request)
     {
+
         $artista = new Artista([
             'nome' => $request->nome ,
             'ano_nasc' => $request->ano_nasc ,
@@ -55,6 +56,10 @@ class ArtistaController extends Controller
         $artista->saveOrFail();
         $artista->grupos()->sync($request->grupos);
         $artista->movimentos()->sync($request->movimentos);
+
+        if($imagem = $request->file('imagem')){
+            $artista->image()->create(['image' => $imagem->store('artistas', 'public')]);
+        }
 
         return redirect('/admin/artistas')->with('success', 'Artista cadastrado com sucesso!');
 
@@ -111,6 +116,9 @@ class ArtistaController extends Controller
     public function destroy($id)
     {
         $artista = Artista::find($id);
+        $artista->grupos()->detach();
+        $artista->movimentos()->detach();
+        $artista->image()->delete();
         $artista->deleteOrFail();
         return redirect('/admin/artistas')->with('success', 'Artsta excluído com sucesso!');
     }

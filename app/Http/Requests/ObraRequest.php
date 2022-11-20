@@ -31,6 +31,7 @@ class ObraRequest extends FormRequest
             'tamanho'=> 'required',
             'artista'=> 'required',
             'local'=> 'required',
+            'imagem'=> 'image',
         ];
     }
 }

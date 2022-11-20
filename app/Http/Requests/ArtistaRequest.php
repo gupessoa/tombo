@@ -31,6 +31,7 @@ class ArtistaRequest extends FormRequest
             'local_nasc' => '',
             'ano_morte' => '',
             'local_morte' => '',
+            'imagem' => 'image'
         ];
     }
 }
