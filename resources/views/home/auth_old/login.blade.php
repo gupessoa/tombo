@@ -38,20 +38,23 @@
                                     <h4 class="font-weight-bolder">Login</h4>
                                     <p class="mb-0">Digite seu e-mail e senha para entrar</p>
                                 </div>
+                                @if($errors->any())
+                                    {{ implode('', $errors->all('<div>:message</div>')) }}
+                                @endif
                                 <div class="card-body mt-2">
                                     <form role="form" action="{{ route('login') }}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" class="form-control">
+                                            <input type="email" name="email" id="email" class="form-control">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Senha</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" id="password" name="password" class="form-control">
                                         </div>
                                         <div class="form-check form-switch d-flex align-items-center mb-3">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
                                             <label class="form-check-label mb-0 ms-3" for="rememberMe">Lembrar-me</label>
                                         </div>
                                         <div class="text-center">
