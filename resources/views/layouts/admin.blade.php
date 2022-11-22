@@ -25,41 +25,34 @@
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="#">
-            <span class="ms-1 font-weight-bold text-white text-center">[Nome da Empresa]</span>
+            <span class="ms-1 font-weight-bold text-white text-center">Arte In Loco</span>
         </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            <li class="nav-item mb-2 mt-0">
-                <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-white" aria-controls="ProfileNav"
-                   role="button" aria-expanded="false">
-                    <img src="./assets/img/team-3.jpg" class="avatar">
-                    <span class="nav-link-text ms-2 ps-1">Brooklyn Alice</span>
-                </a>
-                <div class="collapse" id="ProfileNav">
-                    <ul class="nav ">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="./pages/pages/profile/overview.html">
-                                <span class="sidenav-mini-icon"> MP </span>
-                                <span class="sidenav-normal  ms-3  ps-1"> My Profile </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white " href="./pages/pages/account/settings.html">
-                                <span class="sidenav-mini-icon"> S </span>
-                                <span class="sidenav-normal  ms-3  ps-1"> Settings </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white " href="./pages/authentication/signin/basic.html">
-                                <span class="sidenav-mini-icon"> L </span>
-                                <span class="sidenav-normal  ms-3  ps-1"> Logout </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @auth
+                <li class="nav-item mb-2 mt-0">
+                        <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-white" aria-controls="ProfileNav"
+                           role="button" aria-expanded="false">
+                            <span class="nav-link-text ms-2 ps-1">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
+                        </a>
+                    <div class="collapse" id="ProfileNav">
+                        <ul class="nav ">
+                            <li class="nav-item">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <div class="text-center"><button type="submit" class="nav-link text-white border-0 text-center">Logout</button></div>
+                                </form>
+    {{--                            <a class="" href="./pages/authentication/signin/basic.html">--}}
+    {{--                                <span class="sidenav-mini-icon"> L </span>--}}
+    {{--                                <span class="sidenav-normal  ms-3  ps-1"> Logout </span>--}}
+    {{--                            </a>--}}
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            @endauth
             <hr class="horizontal light mt-0">
             <li class="nav-item mt-3">
                 <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder text-white">PAGES</h6>
@@ -112,6 +105,29 @@
                     <span class="nav-link-text ms-2 ps-1">Movimentos</span>
                 </a>
             </li>
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="">--}}
+{{--                    <i class="material-icons-round">settings</i>--}}
+{{--                    <span class="nav-link-text ms-2 ps-1">Configurações</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a data-bs-toggle="collapse" href="#pagesConfig" class="nav-link text-white active"--}}
+{{--                   aria-controls="pagesConfig" role="button" aria-expanded="false">--}}
+{{--                    <i class="material-icons-round opacity-10">dashboard</i>--}}
+{{--                    <span class="nav-link-text ms-2 ps-1">Páginas</span>--}}
+{{--                </a>--}}
+{{--                <div class="collapse show" id="pagesConfig">--}}
+{{--                    <ul class="nav ">--}}
+{{--                        <li class="nav-item active">--}}
+{{--                            <a class="nav-link text-white active" href="{{ route('admin.pages.index', 1) }}">--}}
+{{--                                <span class="sidenav-mini-icon"> A </span>--}}
+{{--                                <span class="sidenav-normal  ms-2  ps-1"> Analytics </span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </li>--}}
         </ul>
     </div>
 
@@ -144,58 +160,80 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown pe-2">
-                        <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="dropdownMenuButton"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="material-icons cursor-pointer">
-                                notifications
+                        <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="contaBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="material-icons me-sm-1">
+                                account_circle
                             </i>
-
-                            <span
-                                class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger border border-white small py-1 px-2">
-                  <span class="small">11</span>
-                  <span class="visually-hidden">unread notifications</span>
-                </span>
                         </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                        <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="contaBtn">
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="javascript:;">
                                     <div class="d-flex align-items-center py-1">
                                         <span class="material-icons">email</span>
                                         <div class="ms-2">
-                                            <h6 class="text-sm font-weight-normal my-auto">
-                                                Check new messages
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex align-items-center py-1">
-                                        <span class="material-icons">podcasts</span>
-                                        <div class="ms-2">
-                                            <h6 class="text-sm font-weight-normal my-auto">
-                                                Manage podcast session
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex align-items-center py-1">
-                                        <span class="material-icons">shopping_cart</span>
-                                        <div class="ms-2">
-                                            <h6 class="text-sm font-weight-normal my-auto">
-                                                Payment successfully completed
-                                            </h6>
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+{{--                                                <h6 class="text-sm font-weight-normal my-auto">Logout</h6>--}}
+                                                <div class="text-center"><button type="submit" class="dropdown-item border-radius-md">Logout</button></div>
+                                            </form>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                         </ul>
                     </li>
+{{--                    <li class="nav-item dropdown pe-2">--}}
+{{--                        <a href="javascript:;" class="nav-link text-body p-0 position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">--}}
+{{--                            <i class="material-icons cursor-pointer">--}}
+{{--                                notifications--}}
+{{--                            </i>--}}
+
+{{--                            <span--}}
+{{--                                class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger border border-white small py-1 px-2">--}}
+{{--                  <span class="small">11</span>--}}
+{{--                  <span class="visually-hidden">unread notifications</span>--}}
+{{--                </span>--}}
+{{--                        </a>--}}
+
+{{--                        <ul class="dropdown-menu dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">--}}
+{{--                            <li class="mb-2">--}}
+{{--                                <a class="dropdown-item border-radius-md" href="javascript:;">--}}
+{{--                                    <div class="d-flex align-items-center py-1">--}}
+{{--                                        <span class="material-icons">email</span>--}}
+{{--                                        <div class="ms-2">--}}
+{{--                                            <h6 class="text-sm font-weight-normal my-auto">--}}
+{{--                                                Check new messages--}}
+{{--                                            </h6>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="mb-2">--}}
+{{--                                <a class="dropdown-item border-radius-md" href="javascript:;">--}}
+{{--                                    <div class="d-flex align-items-center py-1">--}}
+{{--                                        <span class="material-icons">podcasts</span>--}}
+{{--                                        <div class="ms-2">--}}
+{{--                                            <h6 class="text-sm font-weight-normal my-auto">--}}
+{{--                                                Manage podcast session--}}
+{{--                                            </h6>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a class="dropdown-item border-radius-md" href="javascript:;">--}}
+{{--                                    <div class="d-flex align-items-center py-1">--}}
+{{--                                        <span class="material-icons">shopping_cart</span>--}}
+{{--                                        <div class="ms-2">--}}
+{{--                                            <h6 class="text-sm font-weight-normal my-auto">--}}
+{{--                                                Payment successfully completed--}}
+{{--                                            </h6>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                 </ul>
             </div>
         </div>
