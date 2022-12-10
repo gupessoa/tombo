@@ -16,14 +16,11 @@
             <form action="{{ route('admin.obras.index') }}" method="GET" class="form">
                 @csrf
                 @method('GET')
-                <div class="input-group input-group-dynamic">
-                    <label class="form-label">Procurar</label>
-                    <input type="text" class="form-control" name="search">
-                    <span class="input-group-btn">
-                       <button type="submit" class="btn rounded-circle btn-sm btn-primary search">
-                           <i class="material-icons">search</i>
-                       </button>
-                   </span>
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" name="search" placeholder="Procurar">
+                    <span class="input-group-text" id="addon-wrapping">
+                        <i class="material-symbols-outlined">search</i>
+                    </span>
                 </div>
             </form>
         </div>
@@ -36,7 +33,7 @@
                     </button>
                 </div>
             @endif
-            <table class="table table-responsive table-stripedtable-sm">
+            <table class="table table-responsive table-striped table-sm">
                 <thead>
                 <tr class="border-bottom-white">
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>

@@ -31,4 +31,10 @@ body > main > div.container-fluid.py-4.h-100.w-100 > div > div.list.mt-5 > form 
         border: 1px solid #d2d6da !important;
 }
 
+.main-content{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
 
