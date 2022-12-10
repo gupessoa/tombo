@@ -16,14 +16,11 @@
            <form action="{{ route('admin.grupos.index') }}" method="GET" class="form">
                @csrf
                @method('GET')
-               <div class="input-group input-group-dynamic">
-                   <label class="form-label">Procurar</label>
-                   <input type="text" class="form-control" name="search">
-                   <span class="input-group-btn">
-                       <button type="submit" class="btn rounded-circle btn-sm btn-primary search">
-                           <i class="material-icons">search</i>
-                       </button>
-                   </span>
+               <div class="input-group flex-nowrap">
+                   <input type="text" class="form-control" name="search" placeholder="Procurar">
+                   <span class="input-group-text" id="addon-wrapping">
+                        <i class="material-symbols-outlined">search</i>
+                    </span>
                </div>
            </form>
         </div>
@@ -48,8 +45,8 @@
                         @if($grupos->total())
                             @foreach($grupos as $grupo)
                                 <tr>
-                                    <td class="">{{ $grupo->nome }}</td>
-                                    <td class="d-flex justify-content-center gap-1">
+                                    <td class="align-middle">{{ $grupo->nome }}</td>
+                                    <td class="d-flex justify-content-center gap-1 align-middle">
                                         <div class="d-none d-md-table-cell">
                                             <a href="{{ route('admin.grupos.edit', $grupo) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
                                                 <span class="material-symbols-outlined">edit</span>

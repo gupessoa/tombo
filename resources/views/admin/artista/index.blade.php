@@ -33,7 +33,7 @@
                     </button>
                 </div>
             @endif
-                <table class="table table-responsive table-stripedtable-sm">
+                <table class="table table-responsive table-striped table-sm">
                     <thead>
                         <tr class="border-bottom-white">
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
@@ -48,20 +48,20 @@
 {{--                        @if($artistas->total())--}}
                             @foreach($artistas as $artista)
                                 <tr>
-                                    <td class="">{{ $artista->nome }}</td>
-                                    <td class="">
+                                    <td class="align-middle">{{ $artista->nome }}</td>
+                                    <td class="align-middle">
                                         @foreach($artista->movimentos()->get() as $movimento)
 {{--                                            {{ dd($artista->movimentos()) }}--}}
                                             <small class="btn btn-info btn-sm">{{ $movimento->nome }}</small>
                                         @endforeach
                                     </td>
-                                    <td class="">
+                                    <td class="align-middle">
                                         @foreach($artista->grupos()->get() as $grupo)
                                             <small class="btn btn-success btn-sm">{{ $grupo->nome }}</small>
                                         @endforeach
                                     </td>
-                                    <td class="text-center">?</td>
-                                    <td class="d-flex justify-content-center gap-1">
+                                    <td class="text-center align-middle">?</td>
+                                    <td class="d-flex justify-content-center gap-1 align-middle">
                                         <div class="d-none d-md-table-cell">
                                             <a href="{{ route('admin.artistas.edit', $artista) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
                                                 <span class="material-symbols-outlined">edit</span>

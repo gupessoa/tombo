@@ -48,11 +48,11 @@
                 {{--                        @if($artistas->total())--}}
                 @foreach($obras as $obra)
                     <tr>
-                        <td class="">{{ $obra->nome }}</td>
-                        <td class="">{{ $obra->data }}</td>
-                        <td class="">{{ $obra->artista->nome }}</td>
-                        <td class="">{{ $obra->museu->nome }}</td>
-                        <td class="d-flex justify-content-center gap-1">
+                        <td class="align-middle">{{ $obra->nome }}</td>
+                        <td class="align-middle">{{ $obra->data }}</td>
+                        <td class="align-middle">{{ $obra->artista->nome }}</td>
+                        <td class="align-middle">{{ $obra->museu->nome }}</td>
+                        <td class="d-flex justify-content-center gap-1 align-middle">
                             <div class="d-none d-md-table-cell">
                                 <a href="{{ route('admin.obras.edit', $obra) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
                                     <span class="material-symbols-outlined">edit</span>
