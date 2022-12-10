@@ -16,14 +16,11 @@
            <form action="{{ route('admin.artistas.index') }}" method="GET" class="form">
                @csrf
                @method('GET')
-               <div class="input-group input-group-dynamic">
-                   <label class="form-label">Procurar</label>
-                   <input type="text" class="form-control" name="search">
-                   <span class="input-group-btn">
-                       <button type="submit" class="btn rounded-circle btn-sm btn-primary search">
-                           <i class="material-icons">search</i>
-                       </button>
-                   </span>
+               <div class="input-group flex-nowrap">
+                   <input type="text" class="form-control" name="search" placeholder="Procurar">
+                   <span class="input-group-text" id="addon-wrapping">
+                        <i class="material-symbols-outlined">search</i>
+                    </span>
                </div>
            </form>
         </div>
