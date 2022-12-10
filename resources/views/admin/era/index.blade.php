@@ -33,7 +33,7 @@
                     </button>
                 </div>
             @endif
-                <table class="table table-responsive table-stripedtable-sm">
+                <table class="table table-responsive table-striped table-sm">
                     <thead>
                         <tr class="border-bottom-white">
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
