@@ -15,8 +15,8 @@
         <div class="list mt-5">
             <h1 class="h5">Detalhes</h1>
             <div class="row">
-                <div class="img col-5">
-                    <img src="{{ asset('storage/'.$obra->image->image) }}" alt="{{$obra->nome}}" class="img-fluid">
+                <div class="img col-5 mb-5">
+                    <img src="{{ asset('storage/'.$obra->image->image) }}" alt="{{$obra->nome}}" class="img-fluid img-thumbnail">
                 </div>
                 <div class="detalhes col-7">
                     <p>Artista: {{$obra->artista->nome}} </p>

@@ -22,7 +22,7 @@ class Movimento extends Model
 
     public function geolocals()
     {
-        return $this->belongsToMany(Geolocal::class, 'movimentos_geolocals', 'id_movimento', 'id_geolocal');
+        return $this->belongsToMany(Geolocal::class, 'movimentos_geolocals', 'id_movimentos', 'id_geolocal');
     }
 
     public function era()

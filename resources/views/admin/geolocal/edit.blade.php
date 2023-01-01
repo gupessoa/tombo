@@ -11,24 +11,24 @@
                         Editar Geolocalização</h2>
                 </div>
                 <div class="btn-toolbar row ">
-                    <a class="btn btn-sm btn-primary d-block" href="{{ route('admin.geolocals.index') }}" style="height: fit-content ;">Voltar</a>
+                    <a class="btn btn-primary d-block" href="{{ route('admin.geolocals.index') }}" style="height: fit-content ;">Voltar</a>
                 </div>
             </div>
         </div>
         <div class="list mt-5">
-            <form action="{{ route('admin.geolocals.edit', $geolocal->id) }}" method="POST">
+            <form action="{{ route('admin.geolocals.update', $geolocal->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Nome</label>
+                            <label class="input-group-text">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') ?? $geolocal->nome }}">
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-primary d-block">Salvar</button>
+                    <button type="submit" class="btn btn-primary d-block">Salvar</button>
                 </div>
             </form>
         </div>

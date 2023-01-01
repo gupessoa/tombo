@@ -16,14 +16,11 @@
            <form action="{{ route('admin.artistas.index') }}" method="GET" class="form">
                @csrf
                @method('GET')
-               <div class="input-group input-group-dynamic">
-                   <label class="form-label">Procurar</label>
-                   <input type="text" class="form-control" name="search">
-                   <span class="input-group-btn">
-                       <button type="submit" class="btn rounded-circle btn-sm btn-primary search">
-                           <i class="material-icons">search</i>
-                       </button>
-                   </span>
+               <div class="input-group flex-nowrap">
+                   <input type="text" class="form-control" name="search" placeholder="Procurar">
+                   <span class="input-group-text" id="addon-wrapping">
+                        <i class="material-symbols-outlined">search</i>
+                    </span>
                </div>
            </form>
         </div>
@@ -36,7 +33,7 @@
                     </button>
                 </div>
             @endif
-                <table class="table table-responsive table-stripedtable-sm">
+                <table class="table table-responsive table-striped table-sm">
                     <thead>
                         <tr class="border-bottom-white">
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
@@ -48,23 +45,22 @@
                     </thead>
                     <tbody>
 
-{{--                        @if($artistas->total())--}}
+                        @if($artistas->total())
                             @foreach($artistas as $artista)
                                 <tr>
-                                    <td class="">{{ $artista->nome }}</td>
-                                    <td class="">
+                                    <td class="align-middle">{{ $artista->nome }}</td>
+                                    <td class="align-middle">
                                         @foreach($artista->movimentos()->get() as $movimento)
-{{--                                            {{ dd($artista->movimentos()) }}--}}
                                             <small class="btn btn-info btn-sm">{{ $movimento->nome }}</small>
                                         @endforeach
                                     </td>
-                                    <td class="">
+                                    <td class="align-middle">
                                         @foreach($artista->grupos()->get() as $grupo)
                                             <small class="btn btn-success btn-sm">{{ $grupo->nome }}</small>
                                         @endforeach
                                     </td>
-                                    <td class="text-center">?</td>
-                                    <td class="d-flex justify-content-center gap-1">
+                                    <td class="text-center align-middle">{{ $artista->obras_count }}</td>
+                                    <td class="d-flex justify-content-center gap-1 align-middle">
                                         <div class="d-none d-md-table-cell">
                                             <a href="{{ route('admin.artistas.edit', $artista) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
                                                 <span class="material-symbols-outlined">edit</span>
@@ -102,9 +98,9 @@
                                     </td>
                                 </tr>
                             @endforeach
-{{--                        @else--}}
-{{--                            <tr><td colspan="5" class="text-center">Nenhum registro cadastrado no sistema.</td></tr>--}}
-{{--                        @endif--}}
+                        @else
+                            <tr><td colspan="5" class="text-center">Nenhum registro cadastrado no sistema.</td></tr>
+                        @endif
                     </tbody>
                 </table>
             {{ $artistas->links() }}

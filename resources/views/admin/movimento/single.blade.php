@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-{{--                @if(count($museu->obras) > 0)--}}
+                @if( count($movimento->artistas()->get()) > 0)
                     <tr>
                         @foreach($movimento->artistas()->get() as $artista)
                             <td>{{ $artista->id }}</td>
@@ -41,9 +41,9 @@
                             </td>
                         @endforeach
                     </tr>
-{{--                @else--}}
-{{--                   <tr><td colspan="5" class="text-center">O cliente não efetuou nenhum pedido.</td></tr>--}}
-{{--                @endif--}}
+                @else
+                   <tr><td colspan="5" class="text-center"> Nenhum Artista Relacionado ao movimento</td></tr>
+                @endif
 
                 </tbody>
             </table>

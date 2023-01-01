@@ -1,24 +1,106 @@
-// Bootstrap Functions
-@import "material-dashboard/bootstrap/functions";
+@import "variables";
+@import 'bootstrap/scss/bootstrap';
 
-// Custom Variables
-@import "material-dashboard/custom/variables";
 
-// Theme Variables
-@import "material-dashboard/variables";
+html {
+    height: 100%;
+    min-height: 100%;
+}
 
-// Bootstrap Core
-@import "material-dashboard/bootstrap/bootstrap";
+.wrap-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
 
-// Theme Core
-@import "material-dashboard/theme-pro";
+footer {
+    margin-top: auto;
+}
 
-// Custom Variables
-@import "material-dashboard/custom/styles";
+.nav-link[data-bs-toggle=collapse]:after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f107";
+    margin-left: auto;
+    color: #ced4dab3;
+    transition: all .2s ease-in-out;
+}
 
-.tab-painel{
-    color: #495057FF;
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
-    border-top: none;
+body{
+    height: 100vh;
+}
+#sidebarMenu{
+    min-height: 100vh;
+    max-width: 250px;
+    min-width: 250px;
+    transition: all 0.3s;
+}
+
+#sidebarMenu.active{
+    margin-left: -250px;
+}
+
+#menu-btn{
+    visibility: hidden;
+}
+
+@media (max-width: 768px) {
+
+    #menu-btn{
+        visibility: visible;
+    }
+    #sidebarMenu{
+        margin-left: -250px;
+    }
+
+    #sidebarMenu.active{
+        margin-left: 0;
+    }
+}
+
+
+#picture_input {
+    display: none;
+}
+
+.picture {
+    width: 400px;
+    aspect-ratio: 16/9;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+}
+
+.picture:hover {
+    color: #777;
+    background: #ccc;
+}
+
+.picture:active {
+    border-color: turquoise;
+    color: turquoise;
+    background: #eee;
+}
+
+.picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.picture_img {
+    max-width: 100%;
 }

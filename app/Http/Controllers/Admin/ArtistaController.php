@@ -17,7 +17,7 @@ class ArtistaController extends Controller
      */
     public function index()
     {
-        $artistas = Artista::paginate();
+        $artistas = Artista::withCount(['obras'])->paginate();
         return view('admin.artista.index', ['artistas' => $artistas]);
     }
 
@@ -56,10 +56,6 @@ class ArtistaController extends Controller
         $artista->saveOrFail();
         $artista->grupos()->sync($request->grupos);
         $artista->movimentos()->sync($request->movimentos);
-
-        if($imagem = $request->file('imagem')){
-            $artista->image()->create(['image' => $imagem->store('artistas', 'public')]);
-        }
 
         return redirect('/admin/artistas')->with('success', 'Artista cadastrado com sucesso!');
 
@@ -104,7 +100,19 @@ class ArtistaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $artista = Artista::find($id);
+        $artista->nome = $request->nome;
+        $artista->local_nasc = $request->local_morte;
+        $artista->ano_nasc = $request->ano_nasc;
+        $artista->local_morte = $request->local_nasc;
+        $artista->ano_morte = $request->ano_morte;
+
+        $artista->updateOrFail();
+        $artista->grupos()->sync($request->grupos);
+        $artista->movimentos()->sync($request->movimentos);
+
+        return redirect('/admin/artistas')->with('success', 'Artista atualizado com sucesso!');
+
     }
 
     /**

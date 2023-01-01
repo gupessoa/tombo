@@ -11,10 +11,10 @@
                 <div class="titulo">
                     <h1 class="h3 mb-0 d-block">Obras</h1>
                     <h2 class="fs-6 text-center text-uppercase text-secondary text-lead font-weight-bolder opacity-7" style="letter-spacing: 3px;">
-                        Adicionar Nova Obra</h2>
+                        Editar Obra</h2>
                 </div>
                 <div class="btn-toolbar row ">
-                    <a class="btn btn-sm btn-primary d-block" href="{{ route('admin.obras.index') }}" style="height: fit-content ;">Voltar</a>
+                    <a class="btn btn-primary d-block" href="{{ route('admin.obras.index') }}" style="height: fit-content ;">Voltar</a>
                 </div>
             </div>
         </div>
@@ -25,13 +25,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Nome</label>
+                            <label class="input-group-text">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control" required value="{{ old('nome') ?? $obra->nome }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Nome Estrangeiro</label>
+                            <label class="input-group-text">Nome Estrangeiro</label>
                             <input type="text" name="nome_outro" id="nome_outro" class="form-control" value="{{ old('nome_outro') ?? $obra->nome_outro }}">
                         </div>
                     </div>
@@ -39,19 +39,19 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Data</label>
+                            <label class="input-group-text">Data</label>
                             <input type="number" step="1"  min="-5000000" max="2022" name="data" id="data" class="form-control" required value="{{ old('data') ?? $obra->data }}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Tipo</label>
+                            <label class="input-group-text">Tipo</label>
                             <input type="text" name="tipo" id="tipo" class="form-control" value="{{ old('tipo') ?? $obra->tipo }}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Tamanho</label>
+                            <label class="input-group-text">Tamanho</label>
                             <input type="text" name="tamanho" id="tamanho" class="form-control" value="{{ old('tamanho') ?? $obra->tamanho }}">
                         </div>
                     </div>
@@ -77,8 +77,19 @@
                             </select>
                         </div>
                     </div>
+                    <div class="mt-4 d-flex justify-content-center">
+                        <label class="picture" for="picture_input" tabIndex="0">
+                            <span class="picture_image">
+                                @if($obra->image->image != null && $obra->image->image != '')
+                                    <img  class="img-fluid" src="{{asset('/storage/' . $obra->image->image)}}" alt="{{$obra->nome}}">
+                                @else
+                                    "Selecione a imagem"
+                                @endif</span>
+                        </label>
+                        <input type="file" name="imagem" id="picture_input" accept="image/*">
+                    </div>
                     <div class="d-flex justify-content-end mt-3">
-                        <button type="submit" class="btn btn-sm btn-primary d-block">Cadastrar</button>
+                        <button type="submit" class="btn btn-primary d-block">Cadastrar</button>
                     </div>
             </form>
         </div>

@@ -14,18 +14,18 @@
                         Editar Artista</h2>
                 </div>
                 <div class="btn-toolbar row ">
-                    <a class="btn btn-sm btn-primary d-block" href="{{ route('admin.artistas.index') }}" style="height: fit-content ;">Voltar</a>
+                    <a class="btn  btn-primary d-block" href="{{ route('admin.artistas.index') }}" style="height: fit-content ;">Voltar</a>
                 </div>
             </div>
         </div>
         <div class="list mt-5">
-            <form action="{{ route('admin.artistas.store') }}" method="POST">
+            <form action="{{ route('admin.artistas.update', $artista->id) }}" method="POST">
                 @csrf
-                @method('POST')
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Nome</label>
+                            <label class="input-group-text">Nome</label>
                             <input type="text" name="nome" id="nome" class="form-control" required value="{{ old('nome') ?? $artista->nome }}">
                         </div>
                     </div>
@@ -33,13 +33,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Local de Nascimento</label>
+                            <label class="input-group-text">Local de Nascimento</label>
                             <input type="text" name="local_nasc" id="local_nasc" class="form-control" value="{{ old('local_nasc') ?? $artista->local_nasc}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Ano de Nascimento</label>
+                            <label class="input-group-text">Ano de Nascimento</label>
                             <input type="number" step="1"  min="-5000000" max="2022" name="ano_nasc" id="ano_nasc" class="form-control" value="{{ old('ano_nasc') ?? $artista->ano_nasc }}">
                         </div>
                     </div>
@@ -47,13 +47,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Local de Morte</label>
+                            <label class="input-group-text">Local de Morte</label>
                             <input type="text" name="local_morte" id="local_morte" class="form-control" value="{{ old('local_morte') ?? $artista->local_morte }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Ano de Morte</label>
+                            <label class="input-group-text">Ano de Morte</label>
                             <input type="number" step="1"  min="-5000000" max="2022" name="ano_morte" id="ano_morte" class="form-control" value="{{ old('ano_morte') ?? $artista->ano_morte }}">
                         </div>
                     </div>
@@ -92,8 +92,9 @@
                             </select>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-primary d-block">Cadastrar</button>
+                </div>
+                <div class="d-flex justify-content-end my-4">
+                    <button type="submit" class="btn  btn-primary d-block">Atualizar</button>
                 </div>
             </form>
         </div>

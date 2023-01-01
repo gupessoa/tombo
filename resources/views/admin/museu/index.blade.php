@@ -16,14 +16,11 @@
            <form action="{{ route('admin.museus.index') }}" method="GET" class="form">
                @csrf
                @method('GET')
-               <div class="input-group input-group-dynamic">
-                   <label class="form-label">Procurar</label>
-                   <input type="text" class="form-control" name="search">
-                   <span class="input-group-btn">
-                       <button type="submit" class="btn rounded-circle btn-sm btn-primary search">
-                           <i class="material-icons">search</i>
-                       </button>
-                   </span>
+               <div class="input-group flex-nowrap">
+                   <input type="text" class="form-control" name="search" placeholder="Procurar">
+                   <span class="input-group-text" id="addon-wrapping">
+                        <i class="material-symbols-outlined">search</i>
+                    </span>
                </div>
            </form>
         </div>
@@ -51,11 +48,11 @@
                         @if($museus->total())
                             @foreach($museus as $museu)
                                 <tr>
-                                    <td class="">{{ $museu->nome }}</td>
-                                    <td class="">{{ $museu->cidade }}</td>
-                                    <td class="">{{ $museu->pais }}</td>
-                                    <td class="text-center">?</td>
-                                    <td class="d-flex justify-content-center gap-1">
+                                    <td class="align-middle">{{ $museu->nome }}</td>
+                                    <td class="align-middle">{{ $museu->cidade }}</td>
+                                    <td class="align-middle">{{ $museu->pais }}</td>
+                                    <td class="text-center align-middle"> {{ $museu->obras_count }}</td>
+                                    <td class="d-flex justify-content-center gap-1 align-middle">
                                         <div class="d-none d-md-table-cell">
                                             <a href="{{ route('admin.museus.edit', $museu) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
                                                 <span class="material-symbols-outlined">edit</span>
