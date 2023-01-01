@@ -45,13 +45,12 @@
                     </thead>
                     <tbody>
 
-{{--                        @if($artistas->total())--}}
+                        @if($artistas->total())
                             @foreach($artistas as $artista)
                                 <tr>
                                     <td class="align-middle">{{ $artista->nome }}</td>
                                     <td class="align-middle">
                                         @foreach($artista->movimentos()->get() as $movimento)
-{{--                                            {{ dd($artista->movimentos()) }}--}}
                                             <small class="btn btn-info btn-sm">{{ $movimento->nome }}</small>
                                         @endforeach
                                     </td>
@@ -60,7 +59,7 @@
                                             <small class="btn btn-success btn-sm">{{ $grupo->nome }}</small>
                                         @endforeach
                                     </td>
-                                    <td class="text-center align-middle">?</td>
+                                    <td class="text-center align-middle">{{ $artista->obras_count }}</td>
                                     <td class="d-flex justify-content-center gap-1 align-middle">
                                         <div class="d-none d-md-table-cell">
                                             <a href="{{ route('admin.artistas.edit', $artista) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">
@@ -99,9 +98,9 @@
                                     </td>
                                 </tr>
                             @endforeach
-{{--                        @else--}}
-{{--                            <tr><td colspan="5" class="text-center">Nenhum registro cadastrado no sistema.</td></tr>--}}
-{{--                        @endif--}}
+                        @else
+                            <tr><td colspan="5" class="text-center">Nenhum registro cadastrado no sistema.</td></tr>
+                        @endif
                     </tbody>
                 </table>
             {{ $artistas->links() }}

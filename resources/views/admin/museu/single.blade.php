@@ -28,20 +28,21 @@
                     </tr>
                 </thead>
                 <tbody>
-{{--                @if(count($museu->obras) > 0)--}}
-                    <tr>
-                        <td>1</td>
-                        <td class="text-center">Monaliza</td>
-                        <td class="text-center">15/10/1640</td>
-                        <td class="text-center">D'avinte</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-sm btn-primary"> + Detalhes</a>
-                        </td>
-                    </tr>
-{{--                @else--}}
-{{--                   <tr><td colspan="5" class="text-center">O cliente não efetuou nenhum pedido.</td></tr>--}}
-{{--                @endif--}}
-
+                @if(count($museu->obras) > 0)
+                    @foreach($museu->obras()->get() as $obra)
+                        <tr>
+                            <td>{{ $obra->id }}</td>
+                            <td class="text-center">{{ $obra->nome }}</td>
+                            <td class="text-center">{{ $obra->data }}</td>
+                            <td class="text-center">{{ $obra->artista->nome }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('admin.obras.show', $obra->id) }}" class="btn btn-sm btn-primary"> + Detalhes</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                   <tr><td colspan="5" class="text-center">O cliente não efetuou nenhum pedido.</td></tr>
+                @endif
                 </tbody>
             </table>
         </div>

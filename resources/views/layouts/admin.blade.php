@@ -116,7 +116,12 @@
                             <ul class="dropdown-menu text-small align-self-end">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Logout</a>
+                                </li>
+                                <form action="{{ route('logout') }}" id="form-logout" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </ul>
                         </div>
                     </div>

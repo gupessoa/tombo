@@ -25,17 +25,20 @@
                     </tr>
                 </thead>
                 <tbody>
-{{--                @if(count($era->movimentos) > 0)--}}
+                @if(count($era->movimentos) > 0)
+                    @foreach($era->movimentos()->get() as $movimento)
+
+                    @endforeach
                     <tr>
-                        <td>1</td>
-                        <td class="text-center">Impressionismo</td>
+                        <td>{{ $movimento->id }}</td>
+                        <td class="text-center">{{ $movimento->nome }}</td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-sm btn-primary"> + Detalhes</a>
+                            <a href="{{ route('admin.movimentos.show', $movimento->id) }}" class="btn btn-sm btn-primary"> + Detalhes</a>
                         </td>
                     </tr>
-{{--                @else--}}
-{{--                   <tr><td colspan="5" class="text-center">O cliente não efetuou nenhum pedido.</td></tr>--}}
-{{--                @endif--}}
+                @else
+                   <tr><td colspan="5" class="text-center">O cliente não efetuou nenhum pedido.</td></tr>
+                @endif
 
                 </tbody>
             </table>

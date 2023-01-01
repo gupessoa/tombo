@@ -38,11 +38,20 @@ class EraController extends Controller
      */
     public function store(EraRequest $request)
     {
+//        dd($request->all());
         $era = new Era([
            'nome' => $request->nome,
            'data_inicial' => $request->data_inicial,
            'data_final' => $request->data_final
         ]);
+
+        if($request->data_inicial < 0){
+            $era['data_inicial'] = $request->data_inicial;
+        }
+        if($request->data_final < 0){
+            $era['data_final'] = $request->data_final;
+        }
+//        dd($era);
 
         $era->saveOrFail();
 

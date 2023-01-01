@@ -51,7 +51,7 @@
                                     <td class="align-middle">{{ $museu->nome }}</td>
                                     <td class="align-middle">{{ $museu->cidade }}</td>
                                     <td class="align-middle">{{ $museu->pais }}</td>
-                                    <td class="text-center align-middle">?</td>
+                                    <td class="text-center align-middle"> {{ $museu->obras_count }}</td>
                                     <td class="d-flex justify-content-center gap-1 align-middle">
                                         <div class="d-none d-md-table-cell">
                                             <a href="{{ route('admin.museus.edit', $museu) }}" class="btn btn-primary m-0 btn-sm d-flex align-items-center gap-1">

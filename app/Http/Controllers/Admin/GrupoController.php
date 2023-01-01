@@ -55,7 +55,11 @@ class GrupoController extends Controller
      */
     public function show(Grupo $grupo)
     {
-        return view('admin.grupo.single', ['grupo' => $grupo]);
+        $artistas = $grupo->artistas()->withCount(['obras'])->get();
+        return view('admin.grupo.single', [
+            'grupo' => $grupo,
+            'artistas' => $artistas
+            ]);
     }
 
     /**

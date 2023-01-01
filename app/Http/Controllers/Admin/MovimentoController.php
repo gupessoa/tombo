@@ -80,7 +80,12 @@ class MovimentoController extends Controller
     public function edit(Movimento $movimento)
     {
         $eras = Era::all();
-        return view('admin.movimento.edit', ['movimento' => $movimento, 'eras' => $eras]);
+        $geolocals = Geolocal::all();
+        return view('admin.movimento.edit', [
+            'movimento' => $movimento,
+            'eras' => $eras,
+            'geolocals' => $geolocals
+        ]);
     }
 
     /**

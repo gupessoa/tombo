@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_geolocal');
             $table->foreign('id_geolocal')->references('id')->on('geolocals')->onDelete('cascade');;
-            $table->unsignedBigInteger('id_movimento');
-            $table->foreign('id_movimento')->references('id')->on('movimentos')->onDelete('cascade');;
+            $table->unsignedBigInteger('id_movimentos');
+            $table->foreign('id_movimentos')->references('id')->on('movimentos')->onDelete('cascade');;
             $table->timestamps();
         });
     }

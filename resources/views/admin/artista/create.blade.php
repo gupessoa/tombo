@@ -81,12 +81,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 d-flex justify-content-center">
-                    <label class="picture" for="picture_input" tabIndex="0">
-                        <span class="picture_image">Click e selecione sua imagem.</span>
-                    </label>
-                    <input type="file" name="imagem" id="picture_input" accept="image/*">
-                </div>
                 <div class="d-flex justify-content-end my-4">
                     <button type="submit" class="btn btn-primary d-block">Cadastrar</button>
                 </div>

@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="list mt-5">
-            <form action="{{ route('admin.geolocals.edit', $geolocal->id) }}" method="POST">
+            <form action="{{ route('admin.geolocals.update', $geolocal->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row">

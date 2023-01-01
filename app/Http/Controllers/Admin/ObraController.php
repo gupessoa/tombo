@@ -8,6 +8,7 @@ use App\Models\Artista;
 use App\Models\Museu;
 use App\Models\Obra;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ObraController extends Controller
 {
@@ -59,7 +60,7 @@ class ObraController extends Controller
         $obra->saveOrFail();
 
         if($imagem = $request->file('imagem')){
-            $obra->image()->create(['image' => $imagem->store('obras', 'public')]);
+            $obra->image()->create(['image' => $imagem->store('obras/'.$obra->artista_id, 'public')]);
         }
 
 
@@ -120,4 +121,56 @@ class ObraController extends Controller
         $obra->deleteOrFail();
         return redirect('/admin/obras')->with('success', 'Obra deletada com sucesso!');
     }
+
+    public function files()
+    {
+        //dd(scandir('../storage/app/public/obras'));
+//        $this->listFolderFiles('./storage/obras');
+        $this->listFolderFiles('../storage/app/public/obras');
+    }
+
+    function listFolderFiles($dir) {
+
+        if ($handle = opendir($dir)) {
+            while (false !== ($entry = readdir($handle))) {
+                if ($entry != "." && $entry != "..") {
+//                    echo "$entry\n";
+
+                    $arr[$entry] = array();
+                    if( is_dir($dir.'/'.$entry)){
+                        $arr[$entry] = $this->listFolderFiles($dir.'/'.$entry);
+                    }else{
+//                        dd($dir.'/'.$entry);
+                        $file = explode('.', $entry);
+                        $file_name = $file[0];
+                        $file_ext = $file[1];
+                        $newName = Hash::make($file_name).'.'.$file_ext;
+                        rename($dir.'/'.$file_name.'.'.$file_ext, $dir.'/'.$newName);
+                    }
+                }
+            }
+            closedir($handle);
+        }
+//        $arr = array();
+//        $ffs = scandir($dir);
+//
+//        foreach($ffs as $ff) {
+//            if($ff != '.' && $ff != '..') {
+//                $arr[$ff] = array();
+//                if(is_dir($dir.'/'.$ff)) {
+//                    $arr[$ff] = $this->listFolderFiles($dir.'/'.$ff);
+//                }
+//                else{
+//                    $file = explode('.', $ff);
+//                    $file_name = $file[0];
+//                    $file_ext = $file[1];
+//                    $newName = Hash::make($file_name).'.'.$file_ext;
+//                    rename($dir.'.'.$file_ext, $newName);
+//                }
+//            }
+//        }
+
+//        return $arr;
+    }
+
 }

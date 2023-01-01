@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('eras', App\Http\Controllers\Admin\EraController::class, ['as' => 'admin']);
         Route::resource('movimentos', App\Http\Controllers\Admin\MovimentoController::class, ['as' => 'admin']);
         Route::get('/pages/{id}', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('admin.pages.index');
+        Route::get('/files', [App\Http\Controllers\Admin\ObraController::class, 'files'])->name('files');
     });
 });
 

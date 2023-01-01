@@ -26,19 +26,21 @@
                     </tr>
                 </thead>
                 <tbody>
-{{--                @if(count($museu->obras) > 0)--}}
-                    <tr>
-                        <td>1</td>
-                        <td class="text-center">Modernismo</td>
-                        <td class="text-center">15/10/1640</td>
-                        <td class="text-center">15/10/1660</td>
-                        <td class="text-center">
-                            <a href="" class="btn btn-sm btn-primary"> + Detalhes</a>
-                        </td>
-                    </tr>
-{{--                @else--}}
-{{--                   <tr><td colspan="5" class="text-center">O cliente não efetuou nenhum pedido.</td></tr>--}}
-{{--                @endif--}}
+                @if(count($geolocal->movimentos()->get()) > 0)
+                    @foreach($geolocal->movimentos()->get() as $movimento)
+                        <tr>
+                            <td>1</td>
+                            <td class="text-center">{{ $movimento->nome }}</td>
+                            <td class="text-center">{{ $movimento->data_inicial }}</td>
+                            <td class="text-center">{{ $movimento->data_final }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('admin.movimentos.show', $movimento->id) }}" class="btn btn-sm btn-primary"> + Detalhes</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                   <tr><td colspan="5" class="text-center">O cliente não efetuou nenhum pedido.</td></tr>
+                @endif
 
                 </tbody>
             </table>

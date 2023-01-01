@@ -1,6 +1,10 @@
 
 @extends('layouts.admin')
-
+@push('css')
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@endpush
 @section('content')
     <div class="container">
             <div class="header  d-flex flex-column justify-content-between align-items-center mt-5">
@@ -28,19 +32,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="input-group input-group-outline my-3">
                                 <label class="input-group-text">Data Inicial</label>
                                 <input type="number" step="1"  min="-5000000" max="2022" name="data_inicial" id="data_inicial" class="form-control" value="{{ old('data_inicial') ?? $movimento->data_inicial }}">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="input-group input-group-outline my-3">
                                 <label class="input-group-text">Data Final</label>
                                 <input type="number" step="1"  min="-5000000" max="2022" name="data_final" id="data_final" class="form-control" value="{{ old('data_final') ?? $movimento->data_final }}">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="input-group input-group-outline my-3">
                                 <select id="id_era" class="form-control" name="id_era">
                                     <option value="">Selecione a Era</option>
@@ -50,6 +56,21 @@
                                                     selected
                                                 @endif
                                         >{{ $era->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-outline my-3">
+                                <select id="geolocal" class="form-control" name="geolocal[]" multiple="multiple">
+                                    @foreach($geolocals as $geo)
+                                        <option value="{{ $geo->id }}"
+                                            @foreach($movimento->geolocals()->get() as $geoloc)
+                                                @if($geo->id == $geoloc->id)
+                                                    selected
+                                                @endif
+                                            @endforeach
+                                        >{{ $geo->nome }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -15,8 +15,7 @@ class MuseuController extends Controller
      */
     public function index()
     {
-        //$museus = Museu::all()->withCount('obras')->paginate();
-        $museus = Museu::paginate();
+        $museus = Museu::withCount('obras')->paginate();
         return view('admin.museu.index', ['museus' => $museus]);
     }
 

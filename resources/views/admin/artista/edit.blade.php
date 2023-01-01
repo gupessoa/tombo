@@ -19,9 +19,9 @@
             </div>
         </div>
         <div class="list mt-5">
-            <form action="{{ route('admin.artistas.store') }}" method="POST">
+            <form action="{{ route('admin.artistas.update', $artista->id) }}" method="POST">
                 @csrf
-                @method('POST')
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input-group input-group-outline my-3">
@@ -92,8 +92,9 @@
                             </select>
                     </div>
                 </div>
+                </div>
                 <div class="d-flex justify-content-end my-4">
-                    <button type="submit" class="btn  btn-primary d-block">Cadastrar</button>
+                    <button type="submit" class="btn  btn-primary d-block">Atualizar</button>
                 </div>
             </form>
         </div>
